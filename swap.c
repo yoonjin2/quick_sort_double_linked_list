@@ -1,4 +1,5 @@
 #include "queue.h"
+// XOR swap
 void swap ( int * a , int * b ) {
 	if ( * a == * b )
 		return;

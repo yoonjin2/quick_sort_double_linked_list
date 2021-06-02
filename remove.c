@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "queue.h"
-
+// function that removes the item
 int remove_item ( queue * que , node * q )
 {	
 	int val;

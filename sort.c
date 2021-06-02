@@ -1,5 +1,6 @@
 #include "queue.h"
 #include <stdlib.h>
+//quick sort function
 void sort_func ( queue * que , int pivot ) {
 	
 	if ( que -> size < 2 ) {

@@ -1,3 +1,5 @@
+#define NUM 6
+#define LIM 45
 typedef struct node{
 	int key;
 	struct node *prev;
