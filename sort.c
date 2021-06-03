@@ -23,7 +23,7 @@ void sort_func ( queue * que , int pivot ) {
 		if ( track == que -> rear ) {
 			break;
 		}
-		if ( piv -> key == track -> key ) {
+		if ( piv  == track ) {
 			track = track -> next ;
 			continue;
 		}
