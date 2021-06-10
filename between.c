@@ -8,6 +8,7 @@ void between( queue * que , int item , node * b , node * n) {
         return ;
 	}
 	if ( ( b != n -> prev ) ) {
+		free( q );
 		return ;
 	}
     else {
