@@ -21,7 +21,7 @@ int main()
 	}
 	show ( &lst ); // unsorted linked list
 	puts( "\n\n" );
-	sort_func ( &lst, lst.size / 2 ) ;
+	sort_func ( &lst ) ;
 	show( &lst ); // sorted linked list
 	free_list ( &lst ) ;
     return 0;

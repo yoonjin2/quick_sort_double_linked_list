@@ -1,7 +1,7 @@
 #include "list.h"
 #include <stdlib.h>
 //quick sort function
-void sort_func ( list * lst , int pivot ) {
+void sort_func ( list * lst ) {
 	
 	if ( lst -> size < 2 ) {
 		return;
@@ -13,11 +13,6 @@ void sort_func ( list * lst , int pivot ) {
 	init_list ( &llst );
 	init_list ( &rlst );
 	node * piv = lst -> front -> next, * track = lst -> front -> next ;
-	for ( i = 0 ; i < pivot ; i ++ ) {
-		if ( piv == lst -> rear -> prev )
-			break;
-		piv = piv -> next ;
-	}
 	int k = piv -> key ;
 	for ( i = 0 ; i < lst -> size ; i ++ ) {
 		if ( track == lst -> rear ) {
@@ -36,10 +31,10 @@ void sort_func ( list * lst , int pivot ) {
 	}
 	empty_list( lst );
 	if ( llst.size > 1 ) {
-		sort_func ( &llst , llst.size / 2  ) ;
+		sort_func ( &llst ) ;
 	}
 	if ( rlst.size > 1 ) {
-		sort_func ( &rlst , rlst.size / 2 ) ;
+		sort_func ( &rlst ) ;
 	}
 	if ( llst.size > 0 ) {
 		track = llst.front -> next ;

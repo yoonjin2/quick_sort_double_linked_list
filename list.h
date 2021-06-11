@@ -21,5 +21,5 @@ void show ( list * lst ) ;
 void free_list ( list * lst ) ;
 void empty_list ( list * lst ) ;
 node * find ( list * lst, int key ) ;
-void sort_func ( list * lst , int pivot ) ;
+void sort_func ( list * lst ) ;
 void swap ( int * a, int * b );
