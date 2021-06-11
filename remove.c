@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#include "list.h"
 // function that removes the item
-int remove_item ( queue * que , node * q )
+int remove_item ( list * lst , node * element )
 {	
 	int val;
-    if ( que -> size == 0 ) {
+    if ( lst -> size == 0 ) {
         val = -1;
     } else {
-		node * x = q -> next;
-		node *y = q -> prev ;
+		node * x = element -> next;
+		node *y = element -> prev ;
         x -> prev = y;
 		y -> next = x; 
-		val = q -> key ;
-        free ( q ) ;
-        que -> size -- ;
+		val = element -> key ;
+        free ( element ) ;
+        lst -> size -- ;
     }
 	return val ;
 }

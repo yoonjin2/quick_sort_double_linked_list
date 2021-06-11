@@ -1,15 +1,15 @@
 #include <stdio.h> 
-#include "queue.h"
+#include "list.h"
 #include <stdbool.h>
 
-// return size of queue
-int size( queue * que ) {
-	return que -> size ;
+// return size of list
+int size ( list * lst ) {
+	return lst -> size ;
 }
 
-// check if queue is empty
-bool empty ( queue * que ) {
-    if ( que -> size == 0 ) {
+// check if list is empty
+bool empty ( list * lst ) {
+    if ( lst -> size == 0 ) {
         return true ;
 	}
 

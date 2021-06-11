@@ -1,13 +1,13 @@
 CC=gcc
 CFLAGS=-g -Wall
-TARGET=queue
-OBJS=find.o size.o swap.o remove.o between.o init_queue.o empty_queue.o main.o sort.o queue.o
+TARGET=list
+OBJS=find.o size.o swap.o remove.o between.o init_list.o empty_list.o main.o sort.o list.o
 
 $(TARGET):	$(OBJS)
 	$(CC) -o $@ $(OBJS)
 
-init_queue.o:	init_queue.c
-	$(CC) -c -o init_queue.o init_queue.c 
+init_list.o:	init_list.c
+	$(CC) -c -o init_list.o init_list.c 
 
 swap.o:	swap.c
 	$(CC) -c -o swap.o swap.c
@@ -24,11 +24,11 @@ remove.o: remove.c
 between.o:	between.c
 	$(CC) -c -o between.o between.c
 
-empty_queue.o:	empty_queue.c
-	$(CC) -c -o empty_queue.o empty_queue.c
+empty_list.o:	empty_list.c
+	$(CC) -c -o empty_list.o empty_list.c
 
-queue.o:	queue.c
-	$(CC) -c -o queue.o queue.c
+list.o:	list.c
+	$(CC) -c -o list.o list.c
 
 sort.o:	sort.c
 	$(CC) -c -o sort.o sort.c

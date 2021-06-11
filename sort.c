@@ -1,26 +1,26 @@
-#include "queue.h"
+#include "list.h"
 #include <stdlib.h>
 //quick sort function
-void sort_func ( queue * que , int pivot ) {
+void sort_func ( list * lst , int pivot ) {
 	
-	if ( que -> size < 2 ) {
+	if ( lst -> size < 2 ) {
 		return;
 	}
 
 	auto int i;
 
-	auto queue lque, rque ;
-	init_queue ( &lque );
-	init_queue ( &rque );
-	node * piv = que -> front -> next, * track = que -> front -> next ;
+	auto list llst, rlst ;
+	init_list ( &llst );
+	init_list ( &rlst );
+	node * piv = lst -> front -> next, * track = lst -> front -> next ;
 	for ( i = 0 ; i < pivot ; i ++ ) {
-		if ( piv == que -> rear -> prev )
+		if ( piv == lst -> rear -> prev )
 			break;
 		piv = piv -> next ;
 	}
 	int k = piv -> key ;
-	for ( i = 0 ; i < que -> size ; i ++ ) {
-		if ( track == que -> rear ) {
+	for ( i = 0 ; i < lst -> size ; i ++ ) {
+		if ( track == lst -> rear ) {
 			break;
 		}
 		if ( piv  == track ) {
@@ -28,38 +28,38 @@ void sort_func ( queue * que , int pivot ) {
 			continue;
 		}
 		if ( track -> key < piv -> key ) {
-			between ( &lque , track -> key , lque.rear -> prev , lque.rear ) ;
+			between ( &llst , track -> key , llst.rear -> prev , llst.rear ) ;
 		} else {
-			between ( &rque , track -> key , rque.rear -> prev , rque.rear ) ;
+			between ( &rlst , track -> key , rlst.rear -> prev , rlst.rear ) ;
 		}
 		track = track -> next ;
 	}
-	empty_queue( que );
-	if ( lque.size > 1 ) {
-		sort_func ( &lque , lque.size / 2  ) ;
+	empty_list( lst );
+	if ( llst.size > 1 ) {
+		sort_func ( &llst , llst.size / 2  ) ;
 	}
-	if ( rque.size > 1 ) {
-		sort_func ( &rque , rque.size / 2 ) ;
+	if ( rlst.size > 1 ) {
+		sort_func ( &rlst , rlst.size / 2 ) ;
 	}
-	if ( lque.size > 0 ) {
-		track = lque.front -> next ;
-		for ( i = 0 ; i < lque.size ; i ++ ) {
-			if ( track == lque.rear ) {
+	if ( llst.size > 0 ) {
+		track = llst.front -> next ;
+		for ( i = 0 ; i < llst.size ; i ++ ) {
+			if ( track == llst.rear ) {
 			break;
 			}
-			between ( que , track -> key , que -> rear -> prev, que -> rear );
+			between ( lst , track -> key , lst -> rear -> prev, lst -> rear );
 			track = track -> next ;
 		} 
 	}
-	between ( que , k , que -> rear -> prev , que -> rear );
-	if ( rque.size > 0 ) {
-		track = rque.front -> next ;
-		for ( i = 0 ; i < rque.size ; i ++ ) {
-			if ( track == rque.rear ) {
+	between ( lst , k , lst -> rear -> prev , lst -> rear );
+	if ( rlst.size > 0 ) {
+		track = rlst.front -> next ;
+		for ( i = 0 ; i < rlst.size ; i ++ ) {
+			if ( track == rlst.rear ) {
 				break;
 			}
 
-			between ( que , track -> key , que -> rear -> prev , que -> rear );
+			between ( lst , track -> key , lst -> rear -> prev , lst -> rear );
 			track = track -> next ;
 		}
 	}

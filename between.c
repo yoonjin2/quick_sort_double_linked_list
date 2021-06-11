@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#include "list.h"
 // add number between two nodes
-void between( queue * que , int item , node * b , node * n) {
-    node * q ;
-    if ( ( q = ( node * ) malloc ( sizeof ( node ) ) ) == NULL ) {
+void between( list * lst , int item , node * b , node * n ) {
+    node * element ;
+    if ( ( element = ( node * ) malloc ( sizeof ( node ) ) ) == NULL ) {
         return ;
 	}
 	if ( ( b != n -> prev ) ) {
-		free( q );
+		free( element );
 		return ;
 	}
     else {
-        q -> key = item ;
-        b -> next = q ;
-        q -> prev = b;
-        q -> next = n ;
-		n -> prev = q ;
+        element -> key = item ;
+        b -> next = element ;
+        element -> prev = b;
+        element -> next = n ;
+		n -> prev = element ;
     }
-    que -> size ++ ;
+    lst -> size ++ ;
 }

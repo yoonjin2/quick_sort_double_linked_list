@@ -1,28 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "queue.h"
+#include "list.h"
 #include <time.h>
 int main()
 {
 	srand ( time ( NULL ) ) ;
-    queue que;
-    init_queue ( &que ); //init queue
+    list lst;
+    init_list ( &lst ); //init list
     int i , key[NUM] ;
 	for ( i = 0 ; i < NUM ; i ++ ) {
 	//	key[i] =i;
-		key[i] = ( rand () % LIM ) +1 ;
+		key[i] = ( rand () % LIM ) + 1 ;
 	}
 	for ( i = 0 ; i < NUM ; i ++ ) {
 		swap ( &key [ rand () % NUM ], &key [ rand () % NUM ] ); 
 	}
 	for ( i = 0 ; i < NUM ; i ++ ) {
-		between ( &que, key[i], que.rear->prev , que.rear );
+		between ( &lst, key[i], lst.rear->prev , lst.rear );
 	}
-	show ( &que ); // unsorted linked list
-	puts("\n\n");
-	sort_func ( &que, que.size / 2 ) ;
-	show( &que ); // sorted linked list
-	free_queue ( &que ) ;
+	show ( &lst ); // unsorted linked list
+	puts( "\n\n" );
+	sort_func ( &lst, lst.size / 2 ) ;
+	show( &lst ); // sorted linked list
+	free_list ( &lst ) ;
     return 0;
 }
