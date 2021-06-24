@@ -1,5 +1,5 @@
-#define NUM 10000
-#define LIM 10000
+#define NUM 1000000
+#define LIM 1000000
 typedef struct node{
 	int key;
 	struct node *prev;
@@ -32,7 +32,6 @@ list * complete ( node * first , node * end );
 node * split ( node * a ) ;
 list split_to_list ( node * end , node * split , int size_n , _Bool is_front ) ;
 */
-void merge_sort ( list * lst );
 void sort_func ( list * lst ) ;
 void bubble_sort ( list * lst );
 void swap ( int * a, int * b ); 
