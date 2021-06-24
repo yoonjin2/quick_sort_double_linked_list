@@ -10,10 +10,13 @@ typedef struct list {
 	node *front;
 	node *rear;
 	int size; 
+	_Bool is_sorted;
 } list;
 
 void init_list ( list * lst );
+void reset_list ( list * lst );
 void between  ( list * lst , int item , node * r , node * element ) ;
+void regen_sorted ( list * lst );
 void push ( list * lst , int item ) ;
 int remove_item ( list * lst , node * element ) ;
 int pop_item ( list * lst ) ;

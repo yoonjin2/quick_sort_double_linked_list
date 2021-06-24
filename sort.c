@@ -9,12 +9,13 @@ void sort_func ( list * lst ) {
 	if ( lst -> size < 2 ) {
 		return;
 	}
-	bool flag=false, nflag = false;
 	auto list llst, rlst ;
 	init_list ( &llst );
 	init_list ( &rlst );
-	node * piv = /* index_node ( lst , rand () % lst -> size ) */ lst -> front -> next , * track = lst -> front -> next ;
-	auto int k = piv -> key ;
+	node * piv = index_node ( lst , rand () % lst -> size ) /*lst -> front -> next*/ , * track = lst -> front -> next ;
+	if ( lst -> is_sorted ) {
+		return;
+	}
 	for ( ; track != lst -> rear ; track = track -> next ) {
 		if ( piv  == track ) {
 			track = track -> next ;
@@ -24,35 +25,46 @@ void sort_func ( list * lst ) {
 			push ( &llst , track -> key ) ;
 		} else {
 			push ( &rlst , track -> key );
-		}
-		if ( track -> key < track -> next -> key ) {
-			flag = true;
-		} else {
-			nflag = true;
-		}
+		} 
+			remove_item ( lst , track );
 	}
-	if (flag == true && nflag == false ) {
-		return ;
-	}
-	empty_list( lst );
 	if ( llst.size > 1 ) {
 		sort_func ( &llst ) ;
 	}
 	if ( rlst.size > 1 ) {
 		sort_func ( &rlst ) ;
 	}
-	if ( llst.size > 0 ) {
+	if ( llst.size > 0 ) { /*
 		track = llst.front -> next ;
 		for ( ; track != llst . rear ; track = track -> next ) {
 			push ( lst , track -> key );
-		} 
+		} */
+		node * f = llst.front -> next ;
+		node * r = llst.rear -> prev ;
+		node * left = lst -> front ;
+		left -> next = f ;
+		f -> prev = left ;
+		lst -> rear -> prev = r;
+		r -> next = lst -> rear ;
+		lst -> size += llst.size;
+		init_list ( &llst );
+		free_list ( &llst );
 	}
-	push ( lst , k );
-	if ( rlst.size > 0 ) {
+	if ( rlst.size > 0 ) { /*
 		track = rlst.front -> next ;
 		for ( ; track != rlst . rear ; track = track -> next ) {
 			push ( lst , track -> key );
-		}
+		}*/
+		node * f = rlst.front -> next;
+		node * r = rlst.rear -> prev;
+		node * right = lst -> rear -> prev;
+		right -> next = f;
+		f -> prev = right;
+		r -> next = lst -> rear;
+		lst -> rear -> prev = r;
+		lst -> size += rlst.size;
+		init_list ( &rlst );
+		free_list ( &rlst );
 	}
 }
 void bubble_sort ( list * lst ) {

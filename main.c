@@ -14,7 +14,7 @@ int main()
     init_list ( &lst2 );
 	int i , key[NUM] ;
 	for ( i = 0 ; i < NUM ; i ++ ) {
-//		key[i] =i;
+	//	key[i] =i;
 		key[i] = ( rand () % LIM ) + 1 ;
 	}
 	for ( i = 0 ; i < NUM ; i ++ ) {
@@ -24,12 +24,13 @@ int main()
 		push ( &lst , key [ i ] );
 		push ( &lst2 , key [ i ] );
 	}
-	show ( &lst ); // unsorted linked list
+//	show ( &lst ); // unsorted linked list
 	puts( "\n\n" );
 	clock_t start , end ;
 	start = clock () ;	
 	sort_func ( &lst ) ;
 	end = clock () ;
+	printf("%d\n" , lst.size);
 	show( &lst ); // sorted linked list
 	free_list ( &lst ) ;
 	printf("\n\nmy sort : %lf" , ( double ) (end - start) / CLOCKS_PER_SEC ) ;
