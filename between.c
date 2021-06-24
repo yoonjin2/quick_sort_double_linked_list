@@ -37,4 +37,5 @@ void regen_sorted ( list * lst ) {
 			return ;
 		}
 	}
+	lst -> is_sorted = true;
 }

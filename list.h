@@ -32,6 +32,7 @@ list * complete ( node * first , node * end );
 node * split ( node * a ) ;
 list split_to_list ( node * end , node * split , int size_n , _Bool is_front ) ;
 */
+void merge_sort ( list * lst );
 void sort_func ( list * lst ) ;
 void bubble_sort ( list * lst );
 void swap ( int * a, int * b ); 
