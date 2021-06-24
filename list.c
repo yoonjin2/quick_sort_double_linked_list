@@ -3,7 +3,7 @@
 //show list
 void show( list *lst ) {
     node * t = lst -> front -> next;
-	auto int i;
+	register int i;
     for ( i = 0 ; i < lst -> size ; i ++ ) {
         printf ( "%d\n" , t -> key ) ;
         t = t -> next ;

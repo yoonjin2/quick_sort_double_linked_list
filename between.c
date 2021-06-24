@@ -20,3 +20,6 @@ void between( list * lst , int item , node * b , node * n ) {
     }
     lst -> size ++ ;
 }
+void push ( list * lst , int item ) {
+	between ( lst , item , lst -> rear -> prev , lst -> rear ) ;
+}

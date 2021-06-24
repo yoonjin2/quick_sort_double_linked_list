@@ -18,3 +18,13 @@ node * find ( list * lst, int key ) {
 	}
 	return p;
 }
+node * index_node ( list * lst , int i ) {
+	node * n = lst -> front -> next ;
+	register int k ;
+	for ( k = 0 ; k < i ; k ++ ) {
+		if ( n == lst -> rear -> prev ) {
+			return n;
+		}
+	}
+	return n;
+}
