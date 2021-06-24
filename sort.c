@@ -13,7 +13,7 @@ void sort_func ( list * lst ) {
 	auto list llst, rlst ;
 	init_list ( &llst );
 	init_list ( &rlst );
-	node * piv = index_node ( lst , rand () % lst -> size ) /* lst -> front -> next*/ , * track = lst -> front -> next ;
+	node * piv = /* index_node ( lst , rand () % lst -> size ) */ lst -> front -> next , * track = lst -> front -> next ;
 	auto int k = piv -> key ;
 	for ( ; track != lst -> rear ; track = track -> next ) {
 		if ( piv  == track ) {
