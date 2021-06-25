@@ -33,5 +33,6 @@ node * split ( node * a ) ;
 list split_to_list ( node * end , node * split , int size_n , _Bool is_front ) ;
 */
 void sort_func ( list * lst ) ;
+void sortthree ( list * lst ) ;
 void bubble_sort ( list * lst );
 void swap ( int * a, int * b ); 

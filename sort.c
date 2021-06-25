@@ -2,7 +2,20 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
+void sortthree ( list * lst ) {
+	node * mid = index_node ( lst , ( int ) ( ( float ) ( lst -> size / 2 ) + 0.5 ) ) ;
+	node * front = lst -> front -> next ;
+	node * rear = lst -> rear -> prev ;
+	if (front -> key > mid -> key ) {
+		swap ( &front -> key , &mid -> key );
+	}
+	if ( front -> key > rear -> key ) {
+		swap ( &front -> key , &rear -> key );
+	} 
+	if ( mid -> key > rear -> key ) {
+		swap ( &mid -> key , & rear -> key );
+	}
+}
 void sort_func ( list * lst ) {
 	
 	if ( lst -> size < 2 ) {
@@ -11,7 +24,8 @@ void sort_func ( list * lst ) {
 	auto list llst, rlst ;
 	init_list ( &llst );
 	init_list ( &rlst );
-	node * piv = index_node ( lst , rand () % lst -> size ) /*lst -> front -> next*/ , * track = lst -> front -> next ;
+	sortthree( lst );
+	node * piv = index_node ( lst , ( int ) ( ( float ) ( lst -> size / 2 ) + 0.5 ) ) /*lst -> front -> next*/ , * track = lst -> front -> next ;
 	if ( lst -> is_sorted ) {
 		return;
 	}

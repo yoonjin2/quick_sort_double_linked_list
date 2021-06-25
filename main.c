@@ -14,12 +14,12 @@ int main()
     init_list ( &lst ); //init list
 	int i , key[NUM] ;
 	for ( i = 0 ; i < NUM ; i ++ ) {
-		key[i] =i;
-//		key[i] = ( rand () % LIM ) + 1 ;
-	} /*
+	//	key[i] =i;
+		key[i] = ( rand () % LIM ) + 1 ;
+	}
 	for ( i = 0 ; i < NUM ; i ++ ) {
 		swap ( &key [ rand () % NUM ], &key [ rand () % NUM ] ); 
-	}*/
+	}	
 	for ( i = 0 ; i < NUM ; i ++ ) {
 		push ( &lst , key [ i ] );
 	}
