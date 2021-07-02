@@ -23,14 +23,14 @@ int main()
 	for ( i = 0 ; i < NUM ; i ++ ) {
 		push ( &lst , key [ i ] );
 	}
-	show ( &lst ); // unsorted linked list
+//	show ( &lst ); // unsorted linked list
 	puts( "\n\n" );
 	clock_t start , end ;
 	start = clock () ;	
 	sort_func ( &lst ) ;
 	end = clock () ;
 	printf("%d\n" , lst.size);
-	show( &lst ); // sorted linked list
+	//show( &lst ); // sorted linked list
 	regen_sorted ( &lst );
 	if ( lst.is_sorted == true ) {
 		puts("quick sort -- is sorted");
