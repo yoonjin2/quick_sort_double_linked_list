@@ -21,6 +21,7 @@ void sort_func ( list * lst ) {
 	if ( lst -> size < 2 ) {
 		return;
 	}
+	int sz = lst -> size ;
 	auto list llst, rlst ;
 	init_list ( &llst );
 	init_list ( &rlst );
@@ -60,7 +61,6 @@ void sort_func ( list * lst ) {
 		f -> prev = left ;
 		lst -> rear -> prev = r;
 		r -> next = lst -> rear ;
-		lst -> size += llst.size;
 		reset_list ( &llst );
 		free_list ( &llst );
 	}
@@ -77,10 +77,10 @@ void sort_func ( list * lst ) {
 		f -> prev = right;
 		r -> next = lst -> rear;
 		lst -> rear -> prev = r;
-		lst -> size += rlst.size;
 		reset_list ( &rlst );
 		free_list ( &rlst );
 	}
+	lst -> size = sz ;
 }
 void bubble_sort ( list * lst ) {
 	register int i ;
