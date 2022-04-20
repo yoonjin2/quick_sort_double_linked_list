@@ -25,7 +25,6 @@ void sort_func ( list * lst ) {
 		return;
 	}
 
-	ll sz = lst -> size ;
 	list llst, rlst ;
 	init_list ( &llst );
 	init_list ( &rlst );
@@ -43,7 +42,6 @@ void sort_func ( list * lst ) {
 			push ( &rlst , track -> key );
 		} 
 	}
-	reset_list (lst);
 
 	if ( llst.size > 1 ) {
 		sort_func ( &llst ) ;
@@ -59,7 +57,6 @@ void sort_func ( list * lst ) {
 		f -> prev = left ;
 		lst -> rear -> prev = r;
 		r -> next = lst -> rear ;
-		reset_list(&llst);
 	}
 	push( lst , key );
 	if ( rlst.size > 0 ) { 
@@ -70,9 +67,7 @@ void sort_func ( list * lst ) {
 		f -> prev = right;
 		r -> next = lst -> rear;
 		lst -> rear -> prev = r;
-		reset_list(&rlst);
 	}
-	lst -> size = sz ;
 	lst -> is_sorted = true;
 }
  

@@ -24,24 +24,16 @@ int main(int argc, char ** argv) {
 	  char *orig = argv[idx];
 		float coef=0 , expo=0;
 		char var;
-		bool prflag;
 		while(true) {
-			prflag = true;
 		  coef=0 ;
 			expo=0;
-		  sscanf(orig , "%*c%f%c^%f" , &coef , &var , &expo );
 			if (orig[0] =='+') {
-				prflag = false;
+				memmove(orig , orig+1 , strlen(orig+1)+1);
 			}
+		  sscanf(orig , "%f%c^%f" , &coef , &var , &expo );
 			char * str = (char *)malloc (sizeof(char)*100);
 		  char * cache = (char *)malloc(sizeof(char)*100);
-			if (!prflag&& (coef > 0 )) {
-					sprintf (cache,"%+.2f" , coef);
-			} else if ( coef == 0 ) {
-				continue;
-			} else {
-				sprintf (cache,"%.2f" , coef);
-			}
+			sprintf (cache,"%.2f" , coef);
 			strcat (str,cache);
 		  str[strlen(str)]=var;
 			str[strlen(str)]='^';
@@ -49,12 +41,12 @@ int main(int argc, char ** argv) {
 			strcat(str,cache);
 			puts(orig);
 			puts(str);
-			orig=strrem(orig,str);
-			element_t value = {coef, var , expo };
-			push ( lst , value );
 			if ( !strlen(orig) ) {
 		    break;
 			}
+			orig=strrem(orig,str);
+			element_t value = {coef, var , expo };
+			push ( lst , value );
 		}
 	}
 	beautify (lst);
