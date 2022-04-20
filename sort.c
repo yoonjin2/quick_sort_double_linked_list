@@ -72,24 +72,24 @@ void sort_func ( list * lst ) {
 }
  
 void beautify(list *lst) {
-	node * nd_2 = lst -> front -> next;
-	node * nd = lst -> front -> next ;
+	node * nd_2 = lst -> front -> next; //two nodes are
+	node * nd = lst -> front -> next ; //here;
   for (nd = lst -> front -> next;nd != lst -> rear ;nd=nd->next) {
     for(nd_2 = lst -> front -> next;nd_2 != lst->rear ;nd_2=nd_2->next) {
   	  if (!memcmp(nd,nd_2,sizeof(node))) {
-				continue;
+				continue; //if two of them is same, continue
   		}
     	if ( (nd->key.var == nd_2->key.var) && (nd->key.expo == nd_2->key.expo) ) {
-      	  nd->key.coef += nd_2->key.coef;
-					node * sav = nd_2;
-					nd_2 = nd_2 ->next;
-  				remove_item(lst,sav);
+      	  nd->key.coef += nd_2->key.coef; //merge the coef`
+					node * sav = nd_2; //Node that will be free
+					nd_2 = nd_2 ->next;//go to the next node to avoid error
+  				remove_item(lst,sav);//free NODE!
       }
   	}
   }
   for (nd = lst -> front -> next;nd != lst -> rear ;nd=nd->next) {
     if(nd->key.coef == 0 ){ 
-		  remove_item(lst,nd);
+		  remove_item(lst,nd); //delete if coef == 0 , it is useless
 	  }
 	}
 }

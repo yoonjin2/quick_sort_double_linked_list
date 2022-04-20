@@ -1,2 +1,2 @@
-#Primes
-for fun
+-Polynomial
+22124688 Daegu Univ. Yunjin Lee
