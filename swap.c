@@ -1,12 +1,11 @@
 #include "list.h"
-// XOR swap
-void swap ( int * a , int * b ) {
-	if ( * a == * b ) {
+#include <string.h>
+void swap ( element_t * a , element_t * b ) {
+	if ( memcmp((void *)a , (void *)b , sizeof(element_t)) == 0 ) {
 		return;
 	}
-
-	* a = * a ^ * b;
-	* b = * a ^ * b;
-	* a = * a ^ * b;
+	element_t tmp=*a;
+	*a=*b;
+	*b=tmp;
 }
 

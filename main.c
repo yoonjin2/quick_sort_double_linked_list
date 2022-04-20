@@ -3,45 +3,62 @@
 #include <string.h>
 #include <stdbool.h>
 #include "list.h"
-#include <time.h>
-int compare ( const void * a , const void * b ) {
-	return * (int * ) a - * ( int * ) b ; 
+
+#include <string.h>
+
+char *strrem(char *orig, char *tok) {
+  size_t len = strlen(tok);
+  if (len > 0) {
+      char *ptr = orig;
+      while ((ptr = strstr(ptr, tok)) != NULL) {
+          memmove(ptr, ptr + len, strlen(ptr + len) + 1);
+      }
+  }
+  return orig;
 }
-int main()
-{
-	srand ( time ( NULL ) ) ;
-    list lst ;
-    init_list ( &lst ); //init list
-	int i , key[NUM] ;
-	for ( i = 0 ; i < NUM ; i ++ ) {
-	//	key[i] =i;
-		key[i] = ( rand () % LIM ) + 1 ;
+int main(int argc, char ** argv) { 
+  list *lst =(list *) malloc ( sizeof ( list ));
+	init_list (lst);
+	int idx=1;
+	for (idx = 1 ; idx < argc ; idx ++) {
+	  char *orig = argv[idx];
+		float coef=0 , expo=0;
+		char var;
+		bool prflag;
+		while(true) {
+			prflag = true;
+		  coef=0 ;
+			expo=0;
+		  sscanf(orig , "%*c%f%c^%f" , &coef , &var , &expo );
+			if (orig[0] =='+') {
+				prflag = false;
+			}
+			char * str = (char *)malloc (sizeof(char)*100);
+		  char * cache = (char *)malloc(sizeof(char)*100);
+			if (!prflag&& (coef > 0 )) {
+					sprintf (cache,"%+.2f" , coef);
+			} else if ( coef == 0 ) {
+				continue;
+			} else {
+				sprintf (cache,"%.2f" , coef);
+			}
+			strcat (str,cache);
+		  str[strlen(str)]=var;
+			str[strlen(str)]='^';
+			sprintf (cache,"%.2f" , expo);
+			strcat(str,cache);
+			puts(orig);
+			puts(str);
+			orig=strrem(orig,str);
+			element_t value = {coef, var , expo };
+			push ( lst , value );
+			if ( !strlen(orig) ) {
+		    break;
+			}
+		}
 	}
-	for ( i = 0 ; i < NUM ; i ++ ) {
-		swap ( &key [ rand () % NUM ], &key [ rand () % NUM ] ); 
-	}	
-	for ( i = 0 ; i < NUM ; i ++ ) {
-		push ( &lst , key [ i ] );
-	}
-//	show ( &lst ); // unsorted linked list
-	puts( "\n\n" );
-	clock_t start , end ;
-	start = clock () ;	
-	sort_func ( &lst ) ;
-	end = clock () ;
-	printf("%d\n" , lst.size);
-	//show( &lst ); // sorted linked list
-	regen_sorted ( &lst );
-	if ( lst.is_sorted == true ) {
-		puts("quick sort -- is sorted");
-	} else {
-		puts ("quick sort -- not sorted");
-	}
-	free_list ( &lst );
-	printf("\n\nquick sort --doubly linked list : %lf" , ( double ) (end - start) / CLOCKS_PER_SEC ) ;
-	start = clock ();
-	qsort ( key , NUM , sizeof ( int ) , compare );
-	end = clock ();
-	printf("\n\nquick sort --array : %lf" , ( double ) ( end - start ) / CLOCKS_PER_SEC ) ;
-	return 0;
+	beautify (lst);
+	sort_func(lst);
+	show(lst);
 }
+
