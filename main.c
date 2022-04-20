@@ -39,8 +39,6 @@ int main(int argc, char ** argv) {
 			str[strlen(str)]='^';
 			sprintf (cache,"%.2f" , expo);
 			strcat(str,cache);
-			puts(orig);
-			puts(str);
 			if ( !strlen(orig) ) {
 		    break;
 			}

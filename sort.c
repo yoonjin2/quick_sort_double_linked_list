@@ -84,10 +84,14 @@ void beautify(list *lst) {
 					node * sav = nd_2;
 					nd_2 = nd_2 ->next;
   				remove_item(lst,sav);
-  				printf("current size is %lld\n" , size(lst));
       }
   	}
   }
+  for (nd = lst -> front -> next;nd != lst -> rear ;nd=nd->next) {
+    if(nd->key.coef == 0 ){ 
+		  remove_item(lst,nd);
+	  }
+	}
 }
 
 
