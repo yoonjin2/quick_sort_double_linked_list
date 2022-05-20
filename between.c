@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-#include <string.h>
+#include <stdbool.h>
 // add number between two nodes
-void between( list * lst , element_t item , node * b , node * n ) {
+void between( list * lst , int item , node * b , node * n ) {
     node * element ;
     if ( ( element = ( node * ) malloc ( sizeof ( node ) ) ) == NULL ) {
         return ;
@@ -17,31 +17,25 @@ void between( list * lst , element_t item , node * b , node * n ) {
         b -> next = element ;
         element -> prev = b;
         element -> next = n ;
-	n -> prev = element ;
-    	lst -> size ++ ;
+		n -> prev = element ;
     }
+    lst -> size ++ ;
 }
-void push ( list * lst , element_t item ) {
+void push ( list * lst , int item ) {
 	if ( lst -> size != 0 )	{
-		if ( lst -> rear -> prev -> key.expo > item.expo ) {
-			lst -> is_sorted = 0;
+		if ( lst -> rear -> prev -> key > item ) {
+			lst -> is_sorted = false;
 		} 
 	}	
 	between ( lst , item , lst -> rear -> prev , lst -> rear ) ;
 }
-void push_list ( list * lst , list * lst_target ) {
-	node * nd;
-	for ( nd = lst_target -> front -> next ; nd != lst_target -> rear ; nd = nd -> next ) {
-		push ( lst , nd -> key );
-	}
-}
 void regen_sorted ( list * lst ) {
-	node * p;
-	for ( p = lst -> front -> next; p != lst -> rear; p = p -> next ) {
-		if ( p -> key.expo > p -> next -> key.expo ) {
-			lst -> is_sorted = 0 ;
+	node *p;
+	for ( p = lst -> front -> next; p != lst -> rear -> prev ; p = p -> next ) {
+		if ( p -> key > p -> next -> key ) {
+			lst -> is_sorted = false ;
 			return ;
 		}
 	}
-	lst -> is_sorted = 1;
+	lst -> is_sorted = true;
 }

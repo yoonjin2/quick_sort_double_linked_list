@@ -1,38 +1,30 @@
 #include "list.h"
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 // find node
-node * find ( list * lst, element_t key ) {
-	node * p;
-	p = lst -> front -> next ;
-	while ( p != lst -> rear ) {
-		if ( !memcmp( p , lst -> rear , sizeof(element_t) ) ) {
-			break;
-		}
+node * find ( list * lst, int key ) {
+	node * err;
+	if ( ( err = ( node * ) malloc ( sizeof ( node ) ) ) == NULL ) {
+		printf("Can't return ERROR NODE") ;
+		exit ( 1 );
+	} // if memory is too small , exit
+	err -> key = -1;
+	node * p = lst -> front -> next ;
+	while ( p -> key != key ) {
 		p = p -> next ;
+	}
+	if ( p == lst -> rear ) {
+		return err ;
 	}
 	return p;
 }
-node * index_node ( list * lst , ll i ) {
-	node * n;
-	ll k ;
-	if ( i > lst -> size / 2) {
-		n = lst -> rear -> prev;
-		for ( k = 0 ; k < lst -> size - i + 1 ; k ++ ) {
-			if ( n == lst -> front ) {
-				return lst -> rear;
-			}
-			n = n -> prev;
+node * index_node ( list * lst , int i ) {
+	node * n = lst -> front -> next ;
+	register int k ;
+	for ( k = 0 ; k < i ; k ++ ) {
+		if ( n == lst -> rear -> prev ) {
+			return n;
 		}
-	} else {
-		n = lst -> front -> next ;
-		for ( k = 0 ; k < i ; k ++ ) {
-			if ( n == lst -> rear ) {
-				break;
-			}
-		}
-		n = n -> next;
 	}
 	return n;
 }

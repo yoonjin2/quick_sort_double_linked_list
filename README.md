@@ -1,2 +1,2 @@
--Polynomial
-22124688 Daegu Univ. Yunjin Lee
+# Double Linked List qsort
+ -qsort for double linked list
