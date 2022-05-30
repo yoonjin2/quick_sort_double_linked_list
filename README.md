@@ -1,2 +1,2 @@
-# Double Linked List qsort
- -qsort for double linked list
+# Doubly Linked List qsort
+ -qsort for doubly linked list
