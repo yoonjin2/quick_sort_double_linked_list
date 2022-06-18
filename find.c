@@ -25,6 +25,7 @@ node * index_node ( list * lst , int i ) {
 		if ( n == lst -> rear -> prev ) {
 			return n;
 		}
+		n=n->next;
 	}
 	return n;
 }
