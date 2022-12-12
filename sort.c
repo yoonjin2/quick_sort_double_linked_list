@@ -33,7 +33,6 @@ void sort_func ( list * lst ) {
 	int key = piv -> key;
 	for ( ; track != lst -> rear ; track = track -> next ) {
 		if ( piv  == track ) {
-			track = track -> next ;
 			continue;
 		}
 		if ( track -> key < piv -> key ) {
